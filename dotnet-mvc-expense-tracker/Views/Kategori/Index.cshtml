@@ -1,0 +1,43 @@
+﻿@model IEnumerable<dotnet_mvc_expense_tracker.Models.Kategori>
+@{
+    ViewData["Title"] = "Kategori";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Master Data Kategori</h2>
+<a href="/Kategori/Create" class="btn btn-primary mb-3">Tambah Kategori</a>
+
+<table id="kategoriTable" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Tipe</th>
+            <th>Nama</th>
+            <th>Deskripsi</th>
+            <th>Status</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Tipe</td>
+                <td>@item.Nama</td>
+                <td>@item.Deskripsi</td>
+                <td>@item.Status</td>
+                <td>
+                    <a href="/Kategori/Details/@item.Id" class="btn btn-info btn-sm">Lihat</a>
+                    <a href="/Kategori/Edit/@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/Kategori/Delete/@item.Id" class="btn btn-danger btn-sm">Hapus</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(function () {
+            $("#kategoriTable").DataTable();
+        });
+    </script>
+}
